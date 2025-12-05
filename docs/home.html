@@ -36,11 +36,11 @@
                 const data = await res.json();
                 currentUser = data.currentUserId;
             } else {
-                window.location.href = '/Gagan1606/sorted_1.8/docs/index.html';
+                window.location.href = '/Gagan1606/sorted_1.8_deploy/docs/index.html';
             }
         } catch (err) {
             console.error("Error fetching current user:", err);
-            window.location.href = '/Gagan1606/sorted_1.8/docs/index.html';
+            window.location.href = '/Gagan1606/sorted_1.8_deploy/docs/index.html';
         };
         const uploadBtn = document.getElementById("uploadBtn");
         const photoInput = document.getElementById("photoInput");
@@ -191,12 +191,12 @@
 
         exitBtn.addEventListener('click', async () => {
             await fetch(`${API_BASE}/exit`, { method: 'GET' })
-            window.location.href = '/Gagan1606/sorted_1.8/docs/index.html';
+            window.location.href = '/Gagan1606/sorted_1.8_deploy/docs/index.html';
         })
 
         homeBtn.addEventListener('click', async () => {
             await fetch(`${API_BASE}/index`, { method: 'GET' })
-            window.location.href = '/Gagan1606/sorted_1.8/docs/home.html'
+            window.location.href = '/Gagan1606/sorted_1.8_deploy/docs/home.html'
         })
     </script>
 </body>
