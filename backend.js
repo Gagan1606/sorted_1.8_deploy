@@ -21,6 +21,31 @@ const FormData = require('form-data');
 // }));
 
 
+
+
+// const cors = require('cors');
+
+// const FRONTEND_ORIGIN = 'https://gagan1606.github.io'; // adjust to your GH pages base
+
+// app.use(cors({
+//     origin: FRONTEND_ORIGIN,
+//     credentials: true
+// }));
+
+const cors = require('cors');
+
+const FRONTEND_ORIGIN = 'https://gagan1606.github.io';
+
+const corsOptions = {
+  origin: FRONTEND_ORIGIN,
+  credentials: true,
+  methods: ['GET', 'POST', 'OPTIONS'],
+  allowedHeaders: ['Content-Type']
+};
+
+app.use(cors(corsOptions));
+app.options('*', cors(corsOptions));  // handle preflight
+
 app.use(session({
     secret: 'Gagan',
     resave: false,
@@ -32,15 +57,6 @@ app.use(session({
 }));
 
 app.use('/css1', express.static(path.join(__dirname, '../frontend/css1')));
-const cors = require('cors');
-
-const FRONTEND_ORIGIN = 'https://gagan1606.github.io'; // adjust to your GH pages base
-
-app.use(cors({
-    origin: FRONTEND_ORIGIN,
-    credentials: true
-}));
-
 
 const client = new RekognitionClient({ region: process.env.AWS_REGION });
 async function createCollection() {
