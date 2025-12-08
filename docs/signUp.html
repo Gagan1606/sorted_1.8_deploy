@@ -37,12 +37,14 @@
             // })).json();
             let faceEmbeddings = await fetch(`${API_BASE}/face-embed`, {
                 method: 'POST',
-                body: tempForm
+                body: tempForm,
+                credentials: 'include'
             })
             tempForm.append('faceEmbeddings', faceEmbeddings);
             await fetch(`${API_BASE}/signUp`, {
                 method: 'POST',
-                body: tempForm
+                body: tempForm,
+                credentials: 'include'
             });
             window.location.href = 'https://gagan1606.github.io/sorted_1.8_deploy/index.html';
         })
