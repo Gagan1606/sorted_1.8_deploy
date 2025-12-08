@@ -46,10 +46,10 @@ const corsOptions = {
 };
 
 app.use(cors(corsOptions));
-app.options('*', cors({
-    origin: FRONTEND_ORIGIN,
-    credentials: true
-}));
+// app.options('*', cors({
+//     origin: FRONTEND_ORIGIN,
+//     credentials: true
+// }));
 //app.options('*', cors(corsOptions));  // handle preflight
 
 app.use(session({
