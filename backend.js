@@ -2,7 +2,7 @@ const express = require('express');
 const app = express();
 const mongoose = require('mongoose');
 // const mongoURI = "mongodb://localhost:27017/1_4_db";
-const mongoURI=process.env.MONGO_URI
+const mongoURI = process.env.MONGO_URI
 const multer = require('multer');
 const upload = multer();
 const session = require('express-session');
@@ -36,15 +36,21 @@ const cors = require('cors');
 
 const FRONTEND_ORIGIN = 'https://gagan1606.github.io';
 
+app.set('trust proxy', 1);
+
 const corsOptions = {
-  origin: FRONTEND_ORIGIN,
-  credentials: true,
-  methods: ['GET', 'POST', 'OPTIONS'],
-  allowedHeaders: ['Content-Type']
+    origin: FRONTEND_ORIGIN,
+    credentials: true,
+    methods: ['GET', 'POST', 'OPTIONS'],
+    allowedHeaders: ['Content-Type']
 };
 
 app.use(cors(corsOptions));
-// app.options('*', cors(corsOptions));  // handle preflight
+app.options('*', cors({
+    origin: FRONTEND_ORIGIN,
+    credentials: true
+}));
+//app.options('*', cors(corsOptions));  // handle preflight
 
 app.use(session({
     secret: 'Gagan',
